@@ -165,4 +165,1131 @@
             align-items: center;
             justify-content: flex-end;
             padding-right: 10px;
-            box
+            box-sizing: border-box;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+        }
+        
+        .pregunta-card {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            border-left: 5px solid var(--color-texto);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        .pregunta-card h3 {
+            color: var(--color-texto);
+            margin-top: 0;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+
+        /* Restauración de la apariencia de las opciones de respuesta */
+        .opcion-respuesta {
+            display: block;
+            width: 100%; /* Ocupa todo el ancho */
+            margin: 10px 0;
+            padding: 12px;
+            background-color: var(--color-fondo-claro);
+            border: 1px solid var(--color-texto);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+            font-size: 1.05em;
+            text-align: left; /* Alineación del texto a la izquierda */
+            box-shadow: var(--sombra-opcion);
+            font-family: 'Quicksand', sans-serif; 
+        }
+
+        .opcion-respuesta:hover:not(.disabled) {
+            background-color: #E6F0F0;
+            border-color: var(--color-acento);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .opcion-respuesta.correcta {
+            background-color: #D3F3E3; 
+            border-color: var(--color-texto);
+            font-weight: bold;
+        }
+
+        .opcion-respuesta.incorrecta {
+            background-color: #FEE7F2; 
+            border-color: var(--color-titulo);
+        }
+
+        .opcion-respuesta.disabled {
+            cursor: default;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .feedback.correcto {
+            background-color: var(--color-texto);
+            color: white;
+        }
+
+        .feedback.incorrecto {
+            background-color: var(--color-titulo);
+            color: white;
+        }
+
+        .boton-siguiente-nivel {
+            display: none; /* De vuelta al comportamiento original */
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: white;
+            background-color: var(--color-texto);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-family: 'Quicksand', sans-serif;
+        }
+        
+        /* Pantalla Final del Juego de Comprensión */
+        #pantalla-final-juego {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: var(--color-texto);
+            color: white; /* Color del texto general de la pantalla final */
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+
+        #pantalla-final-juego h2 {
+            color: var(--color-claro);
+            font-size: 3em;
+            margin-bottom: 20px;
+            border: none;
+        }
+        
+        /* Estilo para centrar los mensajes de felicitación */
+        .mensaje-centrado {
+            text-align: center;
+        }
+        /* CAMBIO SOLICITADO: Color blanco para "¡Felicidades! Has completado el" */
+        #pantalla-final-juego .mensaje-centrado {
+             color: white; 
+        }
+        #pantalla-final-juego .mensaje-centrado strong {
+             color: var(--color-acento); 
+        }
+
+
+        /*
+        ========================================
+        3. ESTILOS VOCABULARIO (PAIRING)
+        ========================================
+        */
+        #vocabulario-contenedor {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .columna-palabras {
+            background-color: #E6F0F0;
+            border: 2px solid var(--color-texto);
+        }
+
+        .columna-definiciones {
+            background-color: #FFF8E6;
+            border: 2px solid var(--color-acento);
+        }
+
+        .item-vocabulario {
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.1s, box-shadow 0.2s, background-color 0.2s;
+            user-select: none;
+        }
+
+        .palabra {
+            background-color: var(--color-texto);
+            color: white;
+        }
+
+        .definicion {
+            background-color: var(--color-acento);
+            color: var(--color-texto-oscuro);
+            font-weight: normal;
+        }
+
+        .seleccionado {
+            transform: scale(1.05);
+            box-shadow: 0 0 0 3px var(--color-titulo);
+        }
+
+        .match-correcto {
+            background-color: #31a4ac !important;
+            color: white !important;
+            cursor: default;
+        }
+
+        /* Pantalla Final de Vocabulario */
+        #pantalla-final-vocabulario {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: var(--color-titulo);
+            color: white; 
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+
+        #pantalla-final-vocabulario h2 {
+            color: var(--color-claro);
+            font-size: 3em;
+            margin-bottom: 20px;
+            border: none;
+        }
+        /* CAMBIO SOLICITADO: Color blanco para texto final */
+        #pantalla-final-vocabulario p {
+            color: white; 
+        }
+        #pantalla-final-vocabulario strong {
+            color: var(--color-claro); 
+        }
+
+        /*
+        ========================================
+        4. ESTILOS JUEGO VERDADERO/FALSO (BURBUJAS)
+        ========================================
+        */
+        #juego-burbujas-seccion {
+            background-color: #f0f8ff;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        #area-juego-burbujas {
+            position: relative;
+            height: 500px;
+            width: 100%;
+            background: linear-gradient(to top, #e0f7fa 0%, var(--color-texto) 10%); 
+            border: 3px solid var(--color-texto);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        #barra-info-burbujas {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--color-titulo);
+        }
+
+        .medidor {
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: var(--color-fondo-claro);
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        #control-burbuja {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding-bottom: 20px;
+            z-index: 10;
+        }
+
+        .burbuja {
+            position: absolute;
+            width: auto;
+            min-width: 250px;
+            max-width: 80%;
+            padding: 15px 25px;
+            border-radius: 50px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border: 3px solid var(--color-titulo);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-weight: bold;
+            color: var(--color-texto);
+            font-size: 1.1em;
+            transition: opacity 0.3s, transform 0.3s;
+            z-index: 5;
+            top: 550px;
+            display: none;
+        }
+
+        @keyframes flotar {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-550px) scale(1.1); opacity: 0.9; }
+        }
+
+        @keyframes explotar {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+        
+        .explotando {
+            animation: explotar 0.4s ease-out forwards;
+        }
+
+        #controles-vf {
+            display: flex;
+            gap: 20px;
+            z-index: 20;
+            margin-top: 20px;
+        }
+
+        .boton-vf {
+            padding: 15px 35px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+            transition: transform 0.1s, background-color 0.2s;
+            font-family: 'Quicksand', sans-serif;
+        }
+        
+        .boton-vf:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+        }
+
+        /* CAMBIO SOLICITADO: Color verde (#00ff00) para el botón VERDADERO */
+        #btn-verdadero {
+            background-color: #00ff00; /* Verde brillante */
+        }
+        /* Ajustar hover para el nuevo color */
+        #btn-verdadero:hover {
+            background-color: #00cc00; /* Un verde un poco más oscuro al pasar el ratón */
+        }
+
+
+        #btn-falso {
+            background-color: var(--color-titulo);
+        }
+
+        #retroalimentacion-vf {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            background-color: rgba(49, 164, 172, 0.9);
+            color: white;
+            border-radius: 8px;
+            font-weight: bold;
+            display: none;
+            z-index: 15;
+            text-align: center;
+            max-width: 80%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            transition: opacity 0.3s;
+        }
+
+        #combo-display {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 4em;
+            color: var(--color-claro);
+            text-shadow: 2px 2px 5px var(--color-titulo);
+            font-weight: 900;
+            opacity: 0;
+            display: none;
+            z-index: 20;
+        }
+
+        @keyframes comboPop {
+            0% { opacity: 0; transform: translate(-50%, 50px) scale(0.5); }
+            50% { opacity: 1; transform: translate(-50%, 0px) scale(1.2); }
+            100% { opacity: 0; transform: translate(-50%, -50px) scale(1); }
+        }
+
+        #pantalla-final-burbujas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(247, 25, 174, 0.95);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            text-align: center;
+            z-index: 30;
+            display: none;
+        }
+        
+        #pantalla-final-burbujas h2 {
+            color: var(--color-claro);
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            border: none;
+        }
+        
+        /* CAMBIO SOLICITADO: Texto de la pantalla final en blanco */
+        #pantalla-final-burbujas p {
+            color: white;
+            font-size: 1.1em;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .puntuacion-final {
+            font-size: 3em;
+            color: var(--color-texto);
+            margin-top: 15px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="contenedor-principal">
+        <h1>Las Posadas: Actividades Interactivas</h1>
+
+        <div id="lectura-seccion">
+            <h2>Un diciembre diferente en México: Las Posadas</h2>
+            <audio controls src="https://pasitoapasito-ed.github.io/Biografia-Lionel-Messi/messi.mp3"></audio>
+            
+            <img src="https://github.com/pasitoapasito-ed/Biografia-Lionel-Messi/blob/main/messi-img.png?raw=true" alt="Imagen de Las Posadas" class="imagen-biografia">
+            
+            <h2>¿Qué son las Posadas?</h2>
+            <p>Para muchos jóvenes en México, la parte más esperada de diciembre no son los regalos de Navidad, sino <strong>Las Posadas</strong>. Esta tradición se celebra durante nueve noches, del 16 al 24 de diciembre, para recordar el viaje de María y José buscando un lugar para descansar.</p>
+
+            <h2>El canto y la petición de refugio</h2>
+            <p>El momento principal de la noche ocurre cuando los vecinos se dividen en dos grupos. Un grupo camina por las calles cantando y pidiendo <strong>refugio</strong>, mientras el otro grupo responde desde adentro de una casa. Al principio, la gente de la casa dice que no hay espacio, pero al final abren la puerta y la fiesta comienza.</p>
+
+            <h2>Comida deliciosa y la piñata</h2>
+            <p>La celebración continúa con comida deliciosa. Todos comen <strong>tamales</strong> calientes y toman ponche, una bebida dulce hecha con frutas de la temporada como guayaba y tejocote. Después llega la parte favorita de la noche: romper la piñata de siete picos, que representa la lucha contra las siete <strong>tentaciones</strong>.</p>
+
+            <h2>Una celebración comunitaria</h2>
+            <p>En Estados Unidos, las celebraciones navideñas suelen enfocarse en la decoración de la casa, Santa Claus y la mañana del 25 de diciembre en familia. En cambio, las Posadas mexicanas convierten la Navidad en una fiesta <strong>comunitaria</strong> de nueve días llena de música y comida.</p>
+
+            <button class="boton" onclick="iniciarJuego()">Poner a prueba mi comprensión</button>
+        </div>
+
+        <div id="juego-seccion">
+            <h2>En las Posadas</h2>
+
+            <div class="barra-progreso">
+                <div class="progreso-relleno" id="progreso-relleno">PROGRESO: 0%</div>
+            </div>
+
+            <div id="nivel-contenedor">
+                </div>
+
+            <div id="pantalla-final-juego">
+                <h2>¡Misión Cumplida! 🎉</h2>
+                <p class="mensaje-centrado">¡Felicidades! Has completado la actividad <strong>En las Posadas</strong>.</p>
+                <button class="boton" id="boton-vocabulario" onclick="iniciarVocabulario()">Actividad de vocabulario</button>
+            </div>
+        </div>
+        
+        <div id="vocabulario-seccion">
+            <h2>Actividad de Vocabulario: Unir Conceptos</h2>
+            <p style="text-align:center;"><strong>Instrucción:</strong> Selecciona una palabra de la izquierda y luego su definición correcta de la derecha.</p>
+
+            <div id="vocabulario-contenedor">
+                <div class="columna-palabras" id="columna-palabras">
+                    </div>
+                <div class="columna-definiciones" id="columna-definiciones">
+                    </div>
+            </div>
+
+            <div id="feedback-vocabulario" style="display: none;"></div>
+            
+            <div id="pantalla-final-vocabulario">
+                <h2>🌟 ¡Excelente trabajo!</h2>
+                <p class="mensaje-centrado">Has completado la actividad de vocabulario sobre Las Posadas.</p>
+                <button class="boton" id="iniciar-burbujas-btn" onclick="iniciarJuegoBurbujas()">¡A jugar! Explotando burbujas</button>
+            </div>
+        </div>
+        
+        <div id="juego-burbujas-seccion">
+            <h2>Explotando Burbujas</h2>
+            <p style="text-align:center; margin-bottom: 15px;">¡Sé rápido! Haz clic en Verdadero o Falso antes de que la burbuja se caiga.</p>
+
+            <div id="barra-info-burbujas">
+                <div class="medidor">Puntuación: <span id="puntuacion-burbujas">0</span></div>
+                <div class="medidor">Vidas: <span id="vidas-burbujas">❤️❤️❤️</span></div>
+                <div class="medidor">Combo: <span id="combo-burbujas">0</span>x</div>
+            </div>
+
+            <div id="area-juego-burbujas">
+                <div id="combo-display"></div>
+                <div id="retroalimentacion-vf"></div>
+                
+                <div id="burbuja-activa" class="burbuja" style="left: 30%;">La afirmación va aquí.</div>
+
+                <div id="control-burbuja">
+                    <div id="controles-vf">
+                        <button class="boton-vf" id="btn-verdadero" onclick="responderBurbuja(true)">VERDADERO</button>
+                        <button class="boton-vf" id="btn-falso" onclick="responderBurbuja(false)">FALSO</button>
+                    </div>
+                </div>
+
+                <div id="pantalla-final-burbujas">
+                    <h2 id="titulo-final-burbujas">¡Fin del Juego! 🏆</h2>
+                    <p>Has completado el juego de Verdadero/Falso sobre Las Posadas.</p>
+                    <p>Tu puntuación final es:</p>
+                    <div class="puntuacion-final" id="puntuacion-final-burbujas">0</div>
+                    <button class="boton" onclick="iniciarJuegoBurbujas()">Volver a empezar</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        /*
+        ========================================
+        JAVASCRIPT: LÓGICA DEL JUEGO DE COMPRENSIÓN (EN LAS POSADAS)
+        ========================================
+        */
+
+        // 1. ESTRUCTURA DE DATOS: PREGUNTAS DEL JUEGO (Adaptadas a Las Posadas)
+        const niveles = [
+            {
+                nombre: "Origen y Fechas",
+                preguntas: [
+                    {
+                        pregunta: "¿Durante cuántas noches se celebran las Posadas en México?",
+                        opciones: ["Siete noches", "Nueve noches", "Doce noches", "Cinco noches"],
+                        respuestaCorrecta: 1
+                    },
+                    {
+                        pregunta: "¿Qué viaje recuerdan las Posadas?",
+                        opciones: ["El viaje de Santa Claus", "El viaje de María y José buscando un lugar para descansar", "El viaje de los vecinos al mercado", "El viaje de los Reyes Magos"],
+                        respuestaCorrecta: 1
+                    }
+                ]
+            },
+            {
+                nombre: "La Petición de Refugio",
+                preguntas: [
+                    {
+                        pregunta: "¿Cómo se dividen los vecinos en el momento principal de la noche?",
+                        opciones: ["En tres equipos de baile", "En dos grupos: uno afuera cantando y otro adentro de una casa", "En niños y adultos por separado", "En cocineros y músicos"],
+                        respuestaCorrecta: 1
+                    },
+                    {
+                        pregunta: "¿Qué pasa al principio cuando el grupo pide refugio?",
+                        opciones: ["Abren la puerta inmediatamente", "La gente de la casa dice que no hay espacio", "Todos empiezan a romper la piñata", "Sirven la comida en la calle"],
+                        respuestaCorrecta: 1
+                    }
+                ]
+            },
+            {
+                nombre: "Comida y Tradiciones",
+                preguntas: [
+                    {
+                        pregunta: "¿Con qué frutas de temporada se prepara el ponche?",
+                        opciones: ["Fresa y plátano", "Guayaba y tejocote", "Naranja y sandía", "Mango y piña"],
+                        respuestaCorrecta: 1
+                    },
+                    {
+                        pregunta: "¿Qué representa la piñata de siete picos?",
+                        opciones: ["Los siete días de la semana", "La lucha contra las siete tentaciones", "Los siete colores del arcoíris", "Las siete frutas del ponche"],
+                        respuestaCorrecta: 1
+                    }
+                ]
+            },
+            {
+                nombre: "Comparación Cultural",
+                preguntas: [
+                    {
+                        pregunta: "¿En qué suelen enfocarse las celebraciones navideñas en Estados Unidos, según el texto?",
+                        opciones: ["En caminar por las calles cantando nueve días", "En la decoración de la casa, Santa Claus y la mañana del 25 de diciembre", "En comer tamales y romper piñatas con los vecinos", "En pedir refugio de casa en casa"],
+                        respuestaCorrecta: 1
+                    },
+                    {
+                        pregunta: "¿Cómo describe el texto a las Posadas mexicanas?",
+                        opciones: ["Como una cena tranquila solo en familia", "Como una fiesta comunitaria de nueve días llena de música y comida", "Como un evento enfocado únicamente en los regalos", "Como una celebración de un solo día"],
+                        respuestaCorrecta: 1
+                    }
+                ]
+            }
+        ];
+
+        // 2. VARIABLES DE ESTADO DEL JUEGO
+        let nivelActual = 0;
+        let preguntasRespondidasCorrectamenteEnNivel = 0;
+        const totalNiveles = niveles.length;
+        const famaPorNivel = 100 / totalNiveles;
+
+        // 3. REFERENCIAS DEL DOM (HTML Elements)
+        const lecturaSeccion = document.getElementById('lectura-seccion');
+        const juegoSeccion = document.getElementById('juego-seccion');
+        const nivelContenedor = document.getElementById('nivel-contenedor');
+        const progresoRelleno = document.getElementById('progreso-relleno');
+        const pantallaFinalJuego = document.getElementById('pantalla-final-juego');
+
+        /**
+         * Oculta la sección de lectura y muestra e inicia la sección del juego.
+         */
+        function iniciarJuego() {
+            lecturaSeccion.style.display = 'none';
+            juegoSeccion.style.display = 'block';
+            cargarNivel();
+        }
+
+        /**
+         * Muestra las preguntas del nivel actual.
+         */
+        function cargarNivel() {
+            if (nivelActual >= totalNiveles) {
+                mostrarPantallaFinalJuego();
+                return;
+            }
+
+            nivelContenedor.style.opacity = '0';
+            setTimeout(() => {
+                nivelContenedor.innerHTML = '';
+                preguntasRespondidasCorrectamenteEnNivel = 0;
+
+                const nivel = niveles[nivelActual];
+                let nivelHTML = `<h2>Nivel ${nivelActual + 1}: ${nivel.nombre}</h2>`;
+
+                nivel.preguntas.forEach((preguntaData, indexPregunta) => {
+                    nivelHTML += `
+                        <div class="pregunta-card" data-pregunta-index="${indexPregunta}">
+                            <h3>Pregunta ${indexPregunta + 1}: ${preguntaData.pregunta}</h3>
+                    `;
+                    
+                    preguntaData.opciones.forEach((opcion, indexOpcion) => {
+                        nivelHTML += `
+                            <button 
+                                class="opcion-respuesta" 
+                                onclick="verificarRespuesta(${indexPregunta}, ${indexOpcion}, this)"
+                                data-opcion-index="${indexOpcion}"
+                            >
+                                ${opcion}
+                            </button>
+                        `;
+                    });
+
+                    nivelHTML += `
+                            <div class="feedback" id="feedback-${indexPregunta}"></div>
+                        </div>
+                    `;
+                });
+
+                nivelHTML += `
+                    <button class="boton-siguiente-nivel" id="siguiente-nivel-btn" onclick="siguienteNivel()">
+                        ¡Hecho! Continuar al siguiente nivel
+                    </button>
+                `;
+
+                nivelContenedor.innerHTML = nivelHTML;
+                nivelContenedor.style.opacity = '1';
+            }, 500);
+        }
+
+        /**
+         * Verifica si la opción seleccionada es correcta.
+         * LÓGICA CLAVE: Solo permite avanzar si TODAS las preguntas del nivel han sido respondidas correctamente.
+         */
+        function verificarRespuesta(indexPregunta, indexOpcion, boton) {
+            const pregunta = niveles[nivelActual].preguntas[indexPregunta];
+            const esCorrecta = indexOpcion === pregunta.respuestaCorrecta;
+            const feedbackElement = document.getElementById(`feedback-${indexPregunta}`);
+            const preguntaCard = boton.closest('.pregunta-card');
+            
+            if (preguntaCard.getAttribute('data-respondida') === 'true') return;
+
+            preguntaCard.querySelectorAll('.opcion-respuesta').forEach(b => b.classList.add('disabled'));
+
+            if (esCorrecta) {
+                boton.classList.add('correcta');
+                feedbackElement.className = 'feedback correcto';
+                feedbackElement.innerHTML = '✅ Correcto. ¡Excelente!';
+                feedbackElement.style.display = 'block';
+
+                preguntaCard.setAttribute('data-respondida', 'true');
+                preguntasRespondidasCorrectamenteEnNivel++;
+
+                if (preguntasRespondidasCorrectamenteEnNivel === niveles[nivelActual].preguntas.length) {
+                    document.getElementById('siguiente-nivel-btn').style.display = 'block';
+                    actualizarProgreso();
+                }
+
+            } else {
+                boton.classList.add('incorrecta');
+                feedbackElement.className = 'feedback incorrecto';
+                feedbackElement.innerHTML = '❌ Incorrecto. Vuelve a leer el texto y ¡Intenta otra vez!';
+                feedbackElement.style.display = 'block';
+                
+                preguntaCard.querySelectorAll('.opcion-respuesta').forEach(b => {
+                    if (b !== boton) {
+                         b.classList.remove('disabled');
+                    }
+                });
+                
+                setTimeout(() => {
+                    boton.classList.remove('incorrecta');
+                    preguntaCard.querySelectorAll('.opcion-respuesta').forEach(b => b.classList.remove('disabled'));
+                    feedbackElement.style.display = 'none';
+                }, 1500);
+            }
+        }
+
+
+        /**
+         * Avanza al siguiente nivel del juego.
+         */
+        function siguienteNivel() {
+            nivelActual++;
+            document.getElementById('siguiente-nivel-btn').style.display = 'none';
+            cargarNivel();
+        }
+
+        /**
+         * Actualiza la barra de progreso.
+         */
+        function actualizarProgreso() {
+            const progreso = nivelActual * famaPorNivel;
+            progresoRelleno.style.width = `${progreso + famaPorNivel}%`;
+            progresoRelleno.textContent = `PROGRESO: ${Math.round(progreso + famaPorNivel)}%`;
+        }
+
+        /**
+         * Muestra la pantalla final del juego de comprensión.
+         */
+        function mostrarPantallaFinalJuego() {
+            nivelContenedor.style.display = 'none';
+            pantallaFinalJuego.style.display = 'block';
+        }
+
+
+        /*
+        ========================================
+        JAVASCRIPT: LÓGICA DEL VOCABULARIO
+        ========================================
+        */
+        
+        // 4. ESTRUCTURA DE DATOS: VOCABULARIO (Adaptado a Las Posadas)
+        const vocabularioData = [
+            { palabra: "El refugio", definicion: "Un lugar seguro para descansar o protegerse del frío.", id: 0 },
+            { palabra: "Los tamales", definicion: "Comida tradicional hecha con masa de maíz y rellena de carne o verduras.", id: 1 },
+            { palabra: "Las tentaciones", definicion: "Deseos de hacer algo incorrecto o malo.", id: 2 },
+            { palabra: "Comunitaria", definicion: "Algo que pertenece a todo el grupo de personas de un lugar o que se hace juntos.", id: 3 },
+            { palabra: "Las Posadas", definicion: "Fiesta de nueve noches donde se pide refugio cantando.", id: 4 }
+        ];
+
+        // 5. VARIABLES DE ESTADO DEL VOCABULARIO
+        let palabraSeleccionada = null;
+        let paresCorrectos = 0;
+        const totalPares = vocabularioData.length;
+
+        const vocabularioSeccion = document.getElementById('vocabulario-seccion');
+        const columnaPalabras = document.getElementById('columna-palabras');
+        const columnaDefiniciones = document.getElementById('columna-definiciones');
+        const pantallaFinalVocabulario = document.getElementById('pantalla-final-vocabulario');
+        const feedbackVocabulario = document.getElementById('feedback-vocabulario');
+        
+        function varColor(variable) {
+            return getComputedStyle(document.documentElement).getPropertyValue(variable) || variable;
+        }
+
+
+        /**
+         * Oculta la sección del juego y muestra la de vocabulario.
+         */
+        function iniciarVocabulario() {
+            juegoSeccion.style.display = 'none';
+            vocabularioSeccion.style.display = 'block';
+            cargarVocabulario();
+        }
+
+        /**
+         * Carga y mezcla las palabras y definiciones.
+         */
+        function cargarVocabulario() {
+            columnaPalabras.innerHTML = '';
+            columnaDefiniciones.innerHTML = '';
+            paresCorrectos = 0;
+            
+            const palabras = vocabularioData.map(item => ({ id: item.id, texto: item.palabra }));
+            const definiciones = vocabularioData.map(item => ({ id: item.id, texto: item.definicion }));
+
+            definiciones.sort(() => Math.random() - 0.5); 
+
+            palabras.forEach(p => {
+                const item = document.createElement('div');
+                item.className = 'item-vocabulario palabra';
+                item.textContent = p.texto;
+                item.dataset.matchId = p.id;
+                item.onclick = () => seleccionarPalabra(item);
+                columnaPalabras.appendChild(item);
+            });
+
+            definiciones.forEach(d => {
+                const item = document.createElement('div');
+                item.className = 'item-vocabulario definicion';
+                item.textContent = d.texto;
+                item.dataset.matchId = d.id;
+                item.onclick = () => seleccionarDefinicion(item);
+                columnaDefiniciones.appendChild(item);
+            });
+        }
+
+        /**
+         * Maneja la selección de un elemento Palabra.
+         */
+        function seleccionarPalabra(palabra) {
+            if (palabra.classList.contains('match-correcto')) return;
+
+            if (palabraSeleccionada) {
+                palabraSeleccionada.classList.remove('seleccionado');
+            }
+
+            palabraSeleccionada = palabra;
+            palabraSeleccionada.classList.add('seleccionado');
+            
+            feedbackVocabulario.style.display = 'none';
+        }
+
+        /**
+         * Maneja la selección de un elemento Definición e intenta hacer match.
+         */
+        function seleccionarDefinicion(definicion) {
+            if (definicion.classList.contains('match-correcto')) return;
+            
+            if (!palabraSeleccionada) {
+                mostrarFeedbackVocabulario('Primero selecciona una <strong>palabra</strong> de la columna izquierda.', false);
+                return;
+            }
+
+            const idPalabra = parseInt(palabraSeleccionada.dataset.matchId);
+            const idDefinicion = parseInt(definicion.dataset.matchId);
+
+            if (idPalabra === idDefinicion) {
+                palabraSeleccionada.classList.remove('seleccionado');
+                palabraSeleccionada.classList.add('match-correcto');
+                definicion.classList.add('match-correcto');
+                
+                paresCorrectos++;
+                palabraSeleccionada = null;
+                
+                mostrarFeedbackVocabulario('✅ ¡Par correcto! Sigue uniendo los conceptos.', true);
+
+                if (paresCorrectos === totalPares) {
+                    setTimeout(mostrarPantallaFinalVocabulario, 1000);
+                }
+
+            } else {
+                palabraSeleccionada.classList.remove('seleccionado');
+                palabraSeleccionada = null;
+                mostrarFeedbackVocabulario('❌ Par incorrecto. Intenta de nuevo con otras opciones.', false);
+            }
+        }
+        
+        /**
+         * Muestra el feedback de la actividad de vocabulario.
+         */
+        function mostrarFeedbackVocabulario(mensaje, esCorrecto) {
+            feedbackVocabulario.style.display = 'block';
+            feedbackVocabulario.innerHTML = mensaje.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            
+            if (esCorrecto) {
+                feedbackVocabulario.style.backgroundColor = '#D3F3E3'; 
+                feedbackVocabulario.style.color = varColor('--color-texto');
+                feedbackVocabulario.style.border = `2px solid ${varColor('--color-texto')}`;
+            } else {
+                feedbackVocabulario.style.backgroundColor = '#FEE7F2';
+                feedbackVocabulario.style.color = varColor('--color-titulo');
+                feedbackVocabulario.style.border = `2px solid ${varColor('--color-titulo')}`;
+            }
+        }
+
+        /**
+         * Muestra la pantalla final del vocabulario.
+         */
+        function mostrarPantallaFinalVocabulario() {
+            document.getElementById('vocabulario-contenedor').style.display = 'none';
+            feedbackVocabulario.style.display = 'none';
+            pantallaFinalVocabulario.style.display = 'block';
+        }
+
+
+        /*
+        ========================================
+        JAVASCRIPT: LÓGICA DEL JUEGO VERDADERO/FALSO (BURBUJAS)
+        ========================================
+        */
+
+        // 6. ESTRUCTURA DE DATOS: AFIRMACIONES V/F (Usando la lista proporcionada)
+        const afirmacionesBurbujas = [
+            {
+                texto: "En México, los regalos son la parte más esperada de diciembre.",
+                respuesta: false,
+                feedback: "Falso. Para muchos jóvenes en México, la parte más esperada son <strong>las Posadas</strong>."
+            },
+            {
+                texto: "Las Posadas se celebran durante nueve noches consecutivas.",
+                respuesta: true,
+                feedback: "Verdadero. Se celebran durante nueve noches, del 16 al 24 de diciembre."
+            },
+            {
+                texto: "Los vecinos se dividen en dos grupos durante la celebración.",
+                respuesta: true,
+                feedback: "Verdadero. Un grupo pide refugio afuera y el otro responde desde adentro."
+            },
+            {
+                texto: "La gente dentro de la casa abre la puerta desde el primer momento.",
+                respuesta: false,
+                feedback: "Falso. Al principio dicen que <strong>no hay espacio</strong>, y al final abren la puerta."
+            },
+            {
+                texto: "El ponche es una bebida dulce hecha con frutas de la temporada.",
+                respuesta: true,
+                feedback: "Verdadero. Se prepara con frutas de temporada como guayaba y tejocote."
+            },
+            {
+                texto: "Romper la piñata de siete picos ocurre al inicio de la noche, antes de cantar.",
+                respuesta: false,
+                feedback: "Falso. Ocurre <strong>después</strong> de pedir refugio y disfrutar de la comida."
+            },
+            {
+                texto: "En Estados Unidos las celebraciones suelen enfocarse más en la familia y en la mañana del 25 de diciembre.",
+                respuesta: true,
+                feedback: "Verdadero. Se enfocan en la decoración, Santa Claus y la mañana del 25 en familia."
+            },
+            {
+                texto: "Las Posadas mexicanas son una fiesta comunitaria llena de música y comida.",
+                respuesta: true,
+                feedback: "Verdadero. Convierten la Navidad en una fiesta comunitaria de nueve días."
+            }
+        ];
+
+        // 7. VARIABLES DE ESTADO DEL JUEGO BURBUJAS
+        let puntuacion = 0;
+        let vidas = 3;
+        let combo = 0;
+        let afirmacionActualIndex = 0;
+        let juegoActivo = false;
+        let temporizadorBurbuja;
+        
+        // 8. REFERENCIAS DEL DOM PARA BURBUJAS
+        const juegoBurbujasSeccion = document.getElementById('juego-burbujas-seccion');
+        const burbujaActiva = document.getElementById('burbuja-activa');
+        const puntuacionDisplay = document.getElementById('puntuacion-burbujas');
+        const vidasDisplay = document.getElementById('vidas-burbujas');
+        const comboDisplay = document.getElementById('combo-burbujas');
+        const comboAnimacion = document.getElementById('combo-display');
+        const retroalimentacionVF = document.getElementById('retroalimentacion-vf');
+        const pantallaFinalBurbujas = document.getElementById('pantalla-final-burbujas');
+        const puntuacionFinalBurbujas = document.getElementById('puntuacion-final-burbujas');
+        const tituloFinalBurbujas = document.getElementById('titulo-final-burbujas');
+        const areaJuegoBurbujas = document.getElementById('area-juego-burbujas');
+
+        /**
+         * Inicia el juego de burbujas.
+         */
+        function iniciarJuegoBurbujas() {
+            vocabularioSeccion.style.display = 'none';
+            juegoBurbujasSeccion.style.display = 'block';
+            juegoActivo = true;
+            reiniciarValoresBurbujas();
+            mostrarNuevaBurbuja();
+        }
+        
+        /**
+         * Reinicia los valores de vidas y puntuación para las burbujas.
+         */
+        function reiniciarValoresBurbujas() {
+            puntuacion = 0;
+            vidas = 3;
+            combo = 0;
+            afirmacionesBurbujas.sort(() => Math.random() - 0.5); 
+            afirmacionActualIndex = 0;
+            actualizarDisplayBurbujas();
+            pantallaFinalBurbujas.style.display = 'none';
+        }
+
+        /**
+         * Actualiza el contador de puntos, vidas y combo.
+         */
+        function actualizarDisplayBurbujas() {
+            puntuacionDisplay.textContent = puntuacion;
+            vidasDisplay.textContent = '❤️'.repeat(vidas);
+            comboDisplay.textContent = combo;
+        }
+        
+        /**
+         * Muestra la siguiente burbuja.
+         */
+        function mostrarNuevaBurbuja() {
+            if (!juegoActivo) return;
+
+            if (afirmacionActualIndex >= afirmacionesBurbujas.length) {
+                afirmacionesBurbujas.sort(() => Math.random() - 0.5);
+                afirmacionActualIndex = 0;
+            }
+
+            const afirmacion = afirmacionesBurbujas[afirmacionActualIndex];
+            burbujaActiva.textContent = afirmacion.texto;
+            burbujaActiva.dataset.respuestaCorrecta = afirmacion.respuesta;
+            burbujaActiva.dataset.feedback = afirmacion.feedback;
+
+            burbujaActiva.style.animation = 'none';
+            burbujaActiva.offsetHeight; 
+            burbujaActiva.style.top = `${areaJuegoBurbujas.offsetHeight}px`; 
+            burbujaActiva.style.display = 'block';
+            burbujaActiva.classList.remove('explotando');
+
+            const randomLeft = Math.floor(Math.random() * 50) + 20; 
+            burbujaActiva.style.left = `${randomLeft}%`;
+
+            const duracionAnimacion = 6 + (Math.random() * 2);
+            burbujaActiva.style.animation = `flotar ${duracionAnimacion}s linear forwards`;
+            
+            clearTimeout(temporizadorBurbuja);
+            temporizadorBurbuja = setTimeout(() => {
+                perderVida("¡Tiempo agotado! La afirmación cayó al vacío.");
+            }, duracionAnimacion * 1000);
+            
+            afirmacionActualIndex++;
+        }
+
+        /**
+         * Maneja la respuesta del usuario.
+         */
+        function responderBurbuja(respuestaUsuario) {
+            if (!juegoActivo) return;
+
+            clearTimeout(temporizadorBurbuja);
+            const respuestaCorrecta = burbujaActiva.dataset.respuestaCorrecta === 'true';
+
+            if (respuestaUsuario === respuestaCorrecta) {
+                puntuacion += 10;
+                combo++;
+                
+                if (combo >= 3) {
+                    puntuacion += combo * 5;
+                    mostrarComboAnimacion(combo);
+                }
+                
+                burbujaActiva.style.animation = 'none';
+                burbujaActiva.classList.add('explotando');
+                
+                mostrarFeedbackVF('✅ ¡Correcto!', 1000);
+                
+                setTimeout(() => {
+                    mostrarNuevaBurbuja();
+                }, 400);
+                
+            } else {
+                combo = 0;
+                perderVida(burbujaActiva.dataset.feedback);
+            }
+
+            actualizarDisplayBurbujas();
+        }
+
+        /**
+         * Reduce la vida y maneja el fin del juego por vidas.
+         */
+        function perderVida(mensajeFeedback) {
+            vidas--;
+            combo = 0;
+            
+            mostrarFeedbackVF(`❌ ${mensajeFeedback}`, 3000); 
+            
+            if (vidas <= 0) {
+                juegoActivo = false;
+                terminarJuegoBurbujas();
+            } else {
+                burbujaActiva.style.animation = 'none';
+                burbujaActiva.classList.remove('explotando');
+                mostrarNuevaBurbuja();
+            }
+            actualizarDisplayBurbujas();
+        }
+        
+        /**
+         * Muestra la animación de combo.
+         */
+        function mostrarComboAnimacion(comboCount) {
+            comboAnimacion.textContent = `${comboCount} ¡COMBO! 🌟`;
+            comboAnimacion.style.display = 'block';
+            comboAnimacion.style.animation = 'none';
+            comboAnimacion.offsetHeight;
+            comboAnimacion.style.animation = 'comboPop 0.8s ease-out forwards';
+        }
+
+        /**
+         * Muestra un mensaje de retroalimentación temporal.
+         */
+        function mostrarFeedbackVF(mensaje, duracion) {
+            retroalimentacionVF.innerHTML = mensaje;
+            retroalimentacionVF.style.display = 'block';
+            
+            setTimeout(() => {
+                retroalimentacionVF.style.display = 'none';
+            }, duracion);
+        }
+
+        /**
+         * Finaliza el juego y muestra la pantalla de puntuación.
+         */
+        function terminarJuegoBurbujas() {
+            juegoActivo = false;
+            clearTimeout(temporizadorBurbuja);
+            burbujaActiva.style.display = 'none';
+            
+            puntuacionFinalBurbujas.textContent = puntuacion;
+            
+            if (puntuacion > 0) {
+                tituloFinalBurbujas.innerHTML = '¡Fin del Juego! 🏆';
+            } else {
+                tituloFinalBurbujas.innerHTML = '¡Fin del Juego!';
+            }
+
+            pantallaFinalBurbujas.style.display = 'flex';
+        }
+
+        // 9. FUNCIÓN DE INICIO AUTOMÁTICO
+        // Mantiene la sección de lectura visible al cargar.
+    </script>
+
+</body>
+</html>
